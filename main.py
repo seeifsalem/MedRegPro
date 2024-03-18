@@ -30,7 +30,8 @@ def main():
     api_key = st.text_input("Enter API key here, or contact the author if you don't have one.")
     st.markdown('[Author email](mailto:mohamedseifsalem@gmail.com)')
     use_gpt_4 = st.checkbox("Use GPT-4 for the final prompt (STRONGLY recommended, requires GPT-4 API access - progress bar will appear to get stuck as GPT-4 is slow)", value=True)
-    find_clusters = st.checkbox('Find optimal clusters (experimental, could save on token usage)', value=False)
+    find_clusters = false
+#st.checkbox('Find optimal clusters (experimental, could save on token usage)', value=False)
     st.sidebar.markdown('# Made by: [Seif](https://github.com/seeifsalem)')
     st.sidebar.markdown('# Course: [Lean Startup Academy](https://www.kickbox.academy/)')
     st.sidebar.markdown("""""", unsafe_allow_html=True)
