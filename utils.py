@@ -269,32 +269,32 @@ def split_by_tokens(doc, num_clusters, ratio=5, minimum_tokens=200, maximum_toke
     return split_doc
 
 
-def extract_summary_docs(langchain_document, num_clusters, api_key, find_clusters):
-    """
-    Automatically convert a single langchain Document object into a list of smaller langchain Document objects that represent each cluster.
-
-    :param langchain_document: The langchain Document object to summarize.
-
-    :param num_clusters: The number of clusters to use.
-
-    :param api_key: The OpenAI API key to use for summarization.
-
-    :param find_clusters: Whether to find the optimal number of clusters to use.
-
-    :return: A list of langchain Document objects.
-    """
-    split_document = split_by_tokens(langchain_document, num_clusters)
-    vectors = embed_docs_openai(split_document, api_key)
+#def extract_summary_docs(langchain_document, num_clusters, api_key, find_clusters):
+#    """
+#    Automatically convert a single langchain Document object into a list of smaller langchain Document objects that represent each cluster.
+#
+#    :param langchain_document: The langchain Document object to summarize.
+#
+#    :param num_clusters: The number of clusters to use.
+#
+#    :param api_key: The OpenAI API key to use for summarization.
+#
+#    :param find_clusters: Whether to find the optimal number of clusters to use.
+#
+#    :return: A list of langchain Document objects.
+#    """
+#    split_document = split_by_tokens(langchain_document, num_clusters)
+#    vectors = embed_docs_openai(split_document, api_key)
 
 #    if find_clusters:
 #        kmeans = kmeans_clustering(vectors, None)
 #
 #    else:
-    kmeans = kmeans_clustering(vectors, num_clusters)
-
-    indices = get_closest_vectors(vectors, kmeans)
-    summary_docs = map_vectors_to_docs(indices, split_document)
-    return summary_docs
+#    kmeans = kmeans_clustering(vectors, num_clusters)
+#
+#    indices = get_closest_vectors(vectors, kmeans)
+#    summary_docs = map_vectors_to_docs(indices, split_document)
+#    return summary_docs
 
 
 def doc_to_final_summary(langchain_document, num_clusters, initial_prompt_list, final_prompt_list, api_key, use_gpt_4, find_clusters=False):
