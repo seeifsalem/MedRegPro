@@ -41,7 +41,7 @@ def main():
             process_summarize_button(uploaded_file, api_key, use_gpt_4, find_clusters)
 
         else:
-            doc = youtube_url
+            doc = transcript_loader(youtube_url)
             process_summarize_button(doc, api_key, use_gpt_4, find_clusters, file=False)
 
 
