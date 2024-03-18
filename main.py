@@ -81,11 +81,12 @@ def process_summarize_button(file_or_transcript, api_key, use_gpt_4, find_cluste
                 os.unlink(temp_file_path)
             return
 
-        if find_clusters:
-            summary = doc_to_final_summary(doc, 10, initial_prompt_list, final_prompt_list, api_key, use_gpt_4, find_clusters)
-
-        else:
-            summary = doc_to_final_summary(doc, 10, initial_prompt_list, final_prompt_list, api_key, use_gpt_4)
+#        if find_clusters:
+#            #summary = KeyError
+#            summary = doc_to_final_summary(doc, 10, initial_prompt_list, final_prompt_list, api_key, use_gpt_4, find_clusters)
+#
+#        else:
+        summary = doc_to_final_summary(doc, 10, initial_prompt_list, final_prompt_list, api_key, use_gpt_4)
 
         st.markdown(summary, unsafe_allow_html=True)
         if file:
@@ -100,13 +101,13 @@ def validate_doc_size(doc):
 
     :return: True if the doc is valid, False otherwise
     """
-    if not token_limit(doc, 800000):
-        st.warning('File or transcript too big!')
-        return False
-
-    if not token_minimum(doc, 2000):
-        st.warning('File or transcript too small!')
-        return False
+#    if not token_limit(doc, 800000):
+#        st.warning('File or transcript too big!')
+#        return False
+#
+#    if not token_minimum(doc, 2000):
+#        st.warning('File or transcript too small!')
+#        return False
     return True
 
 

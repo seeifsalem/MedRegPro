@@ -216,7 +216,7 @@ def create_summary_from_docs(summary_docs, initial_chain, final_sum_list, api_ke
     progress = st.progress(0)  # Create a progress bar to show the progress of summarization.
     # Remove this line and all references to it if you are not using Streamlit.
 
-    doc_summaries = parallelize_summaries(summary_docs, initial_chain, progress_bar=progress)
+    doc_summaries = summary_docs
 
     summaries = '\n'.join(doc_summaries)
     count = token_counter(summaries)
@@ -286,11 +286,11 @@ def extract_summary_docs(langchain_document, num_clusters, api_key, find_cluster
     split_document = split_by_tokens(langchain_document, num_clusters)
     vectors = embed_docs_openai(split_document, api_key)
 
-    if find_clusters:
-        kmeans = kmeans_clustering(vectors, None)
-
-    else:
-        kmeans = kmeans_clustering(vectors, num_clusters)
+#    if find_clusters:
+#        kmeans = kmeans_clustering(vectors, None)
+#
+#    else:
+    kmeans = kmeans_clustering(vectors, num_clusters)
 
     indices = get_closest_vectors(vectors, kmeans)
     summary_docs = map_vectors_to_docs(indices, split_document)
@@ -318,8 +318,8 @@ def doc_to_final_summary(langchain_document, num_clusters, initial_prompt_list, 
     :return: A string containing the summary.
     """
     initial_prompt_list = create_summarize_chain(initial_prompt_list)
-    summary_docs = extract_summary_docs(langchain_document, num_clusters, api_key, find_clusters)
-    output = create_summary_from_docs(summary_docs, initial_prompt_list, final_prompt_list, api_key, use_gpt_4)
+#    summary_docs = extract_summary_docs(langchain_document, num_clusters, api_key, find_clusters)
+    output = create_summary_from_docs(langchain_document, initial_prompt_list, final_prompt_list, api_key, use_gpt_4)
     return output
 
 
