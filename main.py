@@ -1,8 +1,11 @@
 import os
 import streamlit as st
+from langchain.docstore.document import Document
+
+
 
 from utils import (
-    doc_loader, summary_prompt_creator, doc_to_final_summary,
+    doc_loader, summary_prompt_creator, doc_to_final_summary
 )
 from my_prompts import file_map, file_combine, youtube_map, youtube_combine
 from streamlit_app_utils import check_gpt_4, check_key_validity, create_temp_file, create_chat_model, \
@@ -42,7 +45,7 @@ def main():
 
         else:
             doc = transcript_loader(youtube_url)
-            process_summarize_button(doc, api_key, use_gpt_4, find_clusters, file=False)
+            process_summarize_button(doc, api_key, use_gpt_4, find_clusters)
 
 
 def process_summarize_button(file_or_transcript, api_key, use_gpt_4, find_clusters, file=True):

@@ -376,6 +376,16 @@ def transcript_loader(video_url):
     loaded = transcript.load()
     return loaded
 
+#def text_to_docx(text, filename):
+#    doc = Document()
+#    
+#    # Adding the text line by line
+#    for line in text.split('\n'):
+#        doc.add_paragraph(line)
+#    
+#    # Save the document
+#    doc.save(filename)
+
 
 
 
