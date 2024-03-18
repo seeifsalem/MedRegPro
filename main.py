@@ -17,15 +17,15 @@ def main():
 
     :return: None.
     """
-    st.title("Document Summarizer")
+    st.title("Regulations Checker")
 
-    input_method = st.radio("Select input method", ('Upload a document', 'Enter a YouTube URL'))
+    input_method = st.radio("Select input method", ('Upload a document', 'Enter a text'))
 
     if input_method == 'Upload a document':
         uploaded_file = st.file_uploader("Upload a document to summarize, 10k to 100k tokens works best!", type=['txt', 'pdf'])
 
     if input_method == 'Enter a YouTube URL':
-        youtube_url = st.text_input("Enter a YouTube URL to summarize")
+        youtube_url = st.text_input("Enter a text to summarize")
 
     api_key = st.text_input("Enter API key here, or contact the author if you don't have one.")
     st.markdown('[Author email](mailto:ethanujohnston@gmail.com)')
