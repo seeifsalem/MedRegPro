@@ -24,7 +24,7 @@ def main():
     if input_method == 'Upload a document':
         uploaded_file = st.file_uploader("Upload a document to summarize, 10k to 100k tokens works best!", type=['txt', 'pdf'])
 
-    if input_method == 'Enter a YouTube URL':
+    if input_method == 'Enter a text':
         youtube_url = st.text_input("Enter a text to summarize")
 
     api_key = st.text_input("Enter API key here, or contact the author if you don't have one.")
