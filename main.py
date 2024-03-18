@@ -30,8 +30,7 @@ def main():
     api_key = st.text_input("Enter API key here, or contact the author if you don't have one.")
     st.markdown('[Author email](mailto:mohamedseifsalem@gmail.com)')
     use_gpt_4 = st.checkbox("Use GPT-4 for the final prompt (STRONGLY recommended, requires GPT-4 API access - progress bar will appear to get stuck as GPT-4 is slow)", value=True)
-    find_clusters = false
-#st.checkbox('Find optimal clusters (experimental, could save on token usage)', value=False)
+#    find_clusters = st.checkbox('Find optimal clusters (experimental, could save on token usage)', value=False)
     st.sidebar.markdown('# Made by: [Seif](https://github.com/seeifsalem)')
     st.sidebar.markdown('# Course: [Lean Startup Academy](https://www.kickbox.academy/)')
     st.sidebar.markdown("""""", unsafe_allow_html=True)
@@ -39,14 +38,14 @@ def main():
 
     if st.button('Summarize (click once and wait)'):
         if input_method == 'Upload a document':
-            process_summarize_button(uploaded_file, api_key, use_gpt_4, find_clusters)
+            process_summarize_button(uploaded_file, api_key, use_gpt_4)
 
         else:
             doc = transcript_loader(youtube_url)
-            process_summarize_button(doc, api_key, use_gpt_4, find_clusters, file=False)
+            process_summarize_button(doc, api_key, use_gpt_4, file=False)
 
 
-def process_summarize_button(file_or_transcript, api_key, use_gpt_4, find_clusters, file=True):
+def process_summarize_button(file_or_transcript, api_key, use_gpt_4 , file=True):
     """
     Processes the summarize button, and displays the summary if input and doc size are valid
 
@@ -82,11 +81,11 @@ def process_summarize_button(file_or_transcript, api_key, use_gpt_4, find_cluste
                 os.unlink(temp_file_path)
             return
 
-        if find_clusters:
-            summary = doc_to_final_summary(doc, 10, initial_prompt_list, final_prompt_list, api_key, use_gpt_4, find_clusters)
-
-        else:
-            summary = doc_to_final_summary(doc, 10, initial_prompt_list, final_prompt_list, api_key, use_gpt_4)
+#        if find_clusters:
+#            summary = doc_to_final_summary(doc, 10, initial_prompt_list, final_prompt_list, api_key, use_gpt_4, find_clusters)
+#
+#        else:
+        summary = doc_to_final_summary(doc, 10, initial_prompt_list, final_prompt_list, api_key, use_gpt_4)
 
         st.markdown(summary, unsafe_allow_html=True)
         if file:
