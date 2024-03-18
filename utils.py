@@ -216,8 +216,7 @@ def create_summary_from_docs(summary_docs, initial_chain, final_sum_list, api_ke
     progress = st.progress(0)  # Create a progress bar to show the progress of summarization.
     # Remove this line and all references to it if you are not using Streamlit.
 
-    doc_summaries = summary_docs
-
+    doc_summaries =  parallelize_summaries(summary_docs, initial_chain, progress_bar=progress)
     summaries = '\n'.join(doc_summaries)
     count = token_counter(summaries)
 
