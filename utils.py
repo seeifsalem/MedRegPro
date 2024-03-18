@@ -218,8 +218,7 @@ def create_summary_from_docs(summary_docs, initial_chain, final_sum_list, api_ke
 
     doc_summaries =  parallelize_summaries(summary_docs, initial_chain, progress_bar=progress)
     summaries = '\n'.join(doc_summaries)
-    count = token_counter(summaries)
-
+    count = 0
     if use_gpt_4:
         max_tokens = 7500 - int(count)
         model = 'gpt-4'
