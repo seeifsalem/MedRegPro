@@ -104,9 +104,6 @@ def validate_doc_size(doc):
         st.warning('File or transcript too big!')
         return False
 
-    if not token_minimum(doc, 2000):
-        st.warning('File or transcript too small!')
-        return False
     return True
 
 
